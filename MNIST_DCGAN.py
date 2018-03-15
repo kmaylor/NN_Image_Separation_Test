@@ -43,7 +43,7 @@ class DCGAN(object):
             return self.D
         self.D = Sequential()
         depth = 64
-        dropout = 0.4
+        dropout = 0.6
         # In: 28 x 28 x 1, depth = 1
         # Out: 14 x 14 x 1, depth=64
         input_shape = (self.img_rows, self.img_cols, self.channel)
@@ -75,7 +75,7 @@ class DCGAN(object):
         if self.G:
             return self.G
         self.G = Sequential()
-        dropout = 0.4
+        dropout = 0.6
         depth = 64+64+64+64
         dim = 7
         # In: 100
@@ -128,6 +128,7 @@ class DCGAN(object):
         self.AM.compile(loss='binary_crossentropy', optimizer=optimizer,\
             metrics=['accuracy'])
         return self.AM
+
 
 class MNIST_DCGAN(object):
     def __init__(self):
